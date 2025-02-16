@@ -1,18 +1,22 @@
 import { Page } from "@playwright/test";
-import { BasePage } from "./basePage";
 
-export class LoginPage extends BasePage {
-    private emailInput = `input[placeholder="Email"]`;
-    private passwordField = `input[placeholder="Password"]`;
-    private loginButton = `'button[type="submit"]:has-text("Log In")'`;
+export class LoginPage {
+    readonly page: Page;
+    readonly emailInput = '[data-testid="email"]';
+    readonly passwordInput = '[data-testid="password"]';
+    readonly loginButton = '[data-testid="login-button"]';
 
     constructor(page: Page) {
-        super(page);
+        this.page = page;
     }
 
-    async login(username: string, password: string) {
-        await this.page.fill(this.emailInput, username);
-        await this.page.fill(this.passwordField, password);
+    async goto() {
+        await this.page.goto("/login");
+    }
+
+    async login(email: string, password: string) {
+        await this.page.fill(this.emailInput, email);
+        await this.page.fill(this.passwordInput, password);
         await this.page.click(this.loginButton);
     }
 }
