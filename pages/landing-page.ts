@@ -12,9 +12,9 @@ export class HomePage {
     this.page = page;
     this.h2Header = page.locator("h2");
     this.spanLogIn = page.locator('span:has-text("Log in to your account")');
-    // this.emailInput = page.locator('input[placeholder="Email"]');
-    // this.passwordInput = page.locator('input[placeholder="Password"]');
-    // this.loginButton = page.locator('button[type="submit"]:has-text("Log In")');
+    this.emailInput = page.locator('input[placeholder="Email"]');
+    this.passwordInput = page.locator('input[placeholder="Password"]');
+    this.loginButton = page.locator('button[type="submit"]:has-text("Log In")');
   }
 
   async goto() {
