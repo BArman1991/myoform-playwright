@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../pages/LoginPage";
+import { LoginPage } from "../pages/login-page";
 import dotenv from 'dotenv';
 
 test("User should be able to log in", async ({ page }) => {
