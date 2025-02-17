@@ -1,22 +1,26 @@
-import { Page } from "@playwright/test";
+import { Page } from '@playwright/test';
 
 export class LoginPage {
-    readonly page: Page;
-    readonly emailInput = '[data-testid="email"]';
-    readonly passwordInput = '[data-testid="password"]';
-    readonly loginButton = '[data-testid="login-button"]';
+  private page: Page;
+  private emailInput = '[data-testid="email"]';
+  private passwordInput = '[data-testid="password"]';
+  private loginButton = '[data-testid="login-button"]';
 
-    constructor(page: Page) {
-        this.page = page;
-    }
+  constructor(page: Page) {
+    this.page = page;
+  }
 
-    async goto() {
-        await this.page.goto("/login");
-    }
+  async navigateTo() {
+    await this.page.goto('');
+  }
 
-    async login(email: string, password: string) {
-        await this.page.fill(this.emailInput, email);
-        await this.page.fill(this.passwordInput, password);
-        await this.page.click(this.loginButton);
-    }
+  async login(email: string, password: string) {
+    await this.page.fill(this.emailInput, email);
+    await this.page.fill(this.passwordInput, password);
+    await this.page.click(this.loginButton);
+  }
+
+  async isLoginButtonVisible(): Promise<boolean> {
+    return this.page.isVisible(this.loginButton);
+  }
 }
