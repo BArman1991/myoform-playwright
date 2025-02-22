@@ -1,27 +1,5 @@
 {
-  "name": "myoform",
-  "version": "1.0.0",
-  "description": "A Playwright automation project for myoform.",
-  "main": "index.js",
-  "scripts": {
-    "test": "playwright test"
-  },
-  "keywords": [
-    "playwright",
-    "automation",
-    "testing"
-  ],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.50.1"
-  },
-  "type": "module",
-  "dependencies": {
-    "dotenv": "^16.4.7",
-    "intl-segmenter": "^1.0.0",
-    "playwright": "^1.50.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "cypress": "^14.0.3"
   }
 }
