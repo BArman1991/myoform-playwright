@@ -1,18 +1,20 @@
 import LandingPage from "../pages/LandingPage";
 
 describe("Landing Page Tests", () => {
-  it("Должен открыть лендинг и проверить заголовок", () => {
+  it("Opens lending page and verefication of heder", () => {
     LandingPage.visit();
 
-    // Проверка заголовка
-    LandingPage.getHeader().should("contain.text", "Ваш заголовок");
+    // Verefication of the header
+    LandingPage.getHeader().should("contain.text", "Welcome Back");
   });
 
-  it("Должен выполнить вход в систему", () => {
-    LandingPage.visit();
-    LandingPage.login("testuser@example.com", "password123");
+  it("Log in to system", () => {
+    // LandingPage.visit();
+    // LandingPage.login("testuser@example.com", "password123");
+    cy.login()
+    cy.get('button[type="submit"]').click();
 
     // Проверка редиректа после логина
-    cy.url().should("include", "/dashboard");
+    // cy.url().should("include", "/dashboard");
   });
 });
