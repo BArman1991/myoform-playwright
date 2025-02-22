@@ -1,6 +1,6 @@
 import { Page, Locator } from "@playwright/test";
 
-export class HomePage {
+export class LandingPage {
   readonly page: Page;
   readonly h2Header: Locator;
   readonly spanLogIn: Locator;
