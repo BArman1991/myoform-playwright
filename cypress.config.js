@@ -3,6 +3,7 @@ require("dotenv").config();
 
 module.exports = defineConfig({
   e2e: {
+    watchForFileChanges: false,
     baseUrl: process.env.BASE_URL,
     env: {
       username: process.env.USERNAME,
