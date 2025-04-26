@@ -1,5 +1,4 @@
 class HealthReportPage {
-  // ✅ Verifies main left-column content
   verifyCardTextByName(cardName, expectedText) {
     cy.contains("h3", cardName, { timeout: 10000 })
       .should("exist")
@@ -16,7 +15,7 @@ class HealthReportPage {
         } catch (error) {
           Cypress.log({
             name: "UI TEXT MISMATCH",
-            message: `Actual UI text:\n${cleaned}`,
+            message: `❗ Text mismatch detected in card "${cardName}"\n\n📝 Expected:\n${expectedCleaned}\n\n📄 Actual UI Text:\n${cleaned}`,
             consoleProps: () => ({
               Card: cardName,
               Expected: expectedCleaned,
@@ -27,8 +26,7 @@ class HealthReportPage {
         }
       });
   }
-
-  // ✅ Verifies expandable section content
+  
   verifyExpandedCardTextByName(cardName, expectedText) {
     cy.contains("h3", cardName, { timeout: 10000 })
       .should("exist")
@@ -36,12 +34,10 @@ class HealthReportPage {
       .parents("[class*=report-info-container]")
       .as("card");
 
-    // Expand the section
     cy.get("@card")
       .find("[class*=expandable-section] .expandable-toggle")
       .click();
 
-    // Get expanded content and verify
     cy.get("@card")
       .find("[class*=expandable-section]")
       .invoke("text")
@@ -54,7 +50,7 @@ class HealthReportPage {
         } catch (error) {
           Cypress.log({
             name: "EXPANDED SECTION MISMATCH",
-            message: `Actual expanded text:\n${cleaned}`,
+            message: `❗ Expanded section mismatch in card "${cardName}"\n\n📝 Expected:\n${expectedCleaned}\n\n📄 Actual Expanded Text:\n${cleaned}`,
             consoleProps: () => ({
               Card: cardName,
               Expected: expectedCleaned,
